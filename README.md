@@ -1,5 +1,8 @@
 # Brute Force Incident Response Lifecycle  
 
+<img width="710" height="400" alt="image" src="https://github.com/user-attachments/assets/3c8c0b18-f62a-45c0-8882-2d3de8e4d290" />
+
+
 [Investigation Report](https://docs.google.com/document/d/10tWE1wahkRUgn_Joy-IpGosjWXdQ6cyWPEBmc7GBCcQ/edit?tab=t.0)
 
 ## Introduction  
