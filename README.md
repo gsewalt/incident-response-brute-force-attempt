@@ -21,7 +21,8 @@ DeviceLogonEvents
 | summarize BruteForceAttempts = count() by RemoteIP, DeviceName
 | where BruteForceAttempts >= 10
 ```
-<img width="400"  alt="image7" src="https://github.com/user-attachments/assets/98c9f2c4-be29-4658-864b-0d30c3fe09d5" />
+<img width="800"  alt="image6" src="https://github.com/user-attachments/assets/9c926517-d1ad-4a6f-a61c-11069cc4fea7" />
+
 
 Once deployed, the rule triggered an incident in Sentinel. I assigned the case to myself and marked it **Active**.  
 <img width="800"  alt="image2" src="https://github.com/user-attachments/assets/0752f86e-6daf-40d7-bf9e-a0e976ab0e91" />
