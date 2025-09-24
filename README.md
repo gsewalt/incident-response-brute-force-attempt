@@ -1,5 +1,7 @@
 # Brute Force Incident Response Lifecycle  
 
+[Investigation Report](https://docs.google.com/document/d/10tWE1wahkRUgn_Joy-IpGosjWXdQ6cyWPEBmc7GBCcQ/edit?tab=t.0)
+
 ## Introduction  
 This project demonstrates the **incident response lifecycle** for a suspected brute force attack. Using Microsoft Sentinel and Defender for Endpoint, I walk through detection, analysis, containment, eradication, recovery, and post-incident activities — mirroring real SOC workflows.  
 
@@ -16,10 +18,10 @@ DeviceLogonEvents
 | summarize BruteForceAttempts = count() by RemoteIP, DeviceName
 | where BruteForceAttempts >= 10
 ```
-<img width="415" height="525" alt="image7" src="https://github.com/user-attachments/assets/98c9f2c4-be29-4658-864b-0d30c3fe09d5" />
+<img width="400"  alt="image7" src="https://github.com/user-attachments/assets/98c9f2c4-be29-4658-864b-0d30c3fe09d5" />
 
 Once deployed, the rule triggered an incident in Sentinel. I assigned the case to myself and marked it **Active**.  
-<img width="1100" height="295" alt="image2" src="https://github.com/user-attachments/assets/0752f86e-6daf-40d7-bf9e-a0e976ab0e91" />
+<img width="800"  alt="image2" src="https://github.com/user-attachments/assets/0752f86e-6daf-40d7-bf9e-a0e976ab0e91" />
 
 
 ---
@@ -31,7 +33,7 @@ I investigated the triggered incident in Sentinel.
   - 8 separate assets targeted  
   - 28 source IP addresses involved  
   - 9 unique public IPs confirmed as sources  
-<img width="1040" height="473" alt="image1" src="https://github.com/user-attachments/assets/5c3a91cb-184b-43ff-9d2d-50d9a0127a0c" />
+<img width="800" alt="image1" src="https://github.com/user-attachments/assets/5c3a91cb-184b-43ff-9d2d-50d9a0127a0c" />
 
 To validate whether any of these brute force attempts were successful, I ran the following query:  
 
@@ -43,7 +45,7 @@ DeviceLogonEvents
 ```
 
 **Result:** No successful logons were observed.  
-<img width="854" height="296" alt="image5" src="https://github.com/user-attachments/assets/8d2b8180-e208-4c24-8d1c-b1e041858771" />
+<img width="800"  alt="image5" src="https://github.com/user-attachments/assets/8d2b8180-e208-4c24-8d1c-b1e041858771" />
 
 ---
 
@@ -52,7 +54,7 @@ Although the brute force attempts were unsuccessful, I carried out containment a
 
 - Isolated the affected assets and scanned with **Microsoft Defender Endpoint**.  
 - Hardened the **Network Security Group (NSG)** to block inbound RDP (TCP/3389) from the public internet.  
-<img width="424" height="540" alt="image3" src="https://github.com/user-attachments/assets/706c4c45-fc59-4b97-8dca-787835aa13b0" />
+<img width="600"  alt="image3" src="https://github.com/user-attachments/assets/706c4c45-fc59-4b97-8dca-787835aa13b0" />
 
 At this point, no compromise was detected and systems were confirmed clean.  
 
@@ -61,11 +63,14 @@ At this point, no compromise was detected and systems were confirmed clean.
 ## 📑 Post-Incident Activities  
 All investigation details were documented in Sentinel’s activity log. To strengthen long-term defenses, I proposed a security policy requiring all company assets to follow a similar NSG rule.
 
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/bd73ea04-b5ee-4be7-8103-b81db95d4f05" />
+
+[Policy Proposal](https://docs.google.com/document/d/14U9vmfhzLg65EiOlY1ilhv7NJKfhCnphinoaE_oh3cw/edit?tab=t.0)  
 
 ---
 
 ## ✅ Closure  
-- Reviewed incident notes and finalized the investigation.  
+- Reviewed incident notes and finalized the investigation report.
 - Closed the case in Sentinel as a **Benign Positive**.  
 - Lessons learned were rolled into updated access control policy.  
 
